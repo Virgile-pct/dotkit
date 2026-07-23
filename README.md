@@ -1,88 +1,95 @@
 # DOTKIT
 
-Micro-bibliothèque UX brutaliste, zéro dépendance, treize modules.
-**Démo interactive : [virgile-pct.github.io/lab/dotkit/demo.html](https://virgile-pct.github.io/lab/dotkit/demo.html)**
+[![npm](https://img.shields.io/npm/v/dotkitjs)](https://www.npmjs.com/package/dotkitjs)
+[![license](https://img.shields.io/badge/license-MIT-7b5cff)](LICENSE)
 
-## Le parti pris : quantized motion
+Brutalist UX micro-library. Thirteen modules, zero dependencies, no build step.
+**Live demo: [virgile-pct.github.io/lab/dotkit/demo.html](https://virgile-pct.github.io/lab/dotkit/demo.html)**
+· *Documentation française : [README.fr.md](README.fr.md)*
 
-Toutes les bibliothèques d'animation visent la fluidité. DOTKIT prend le
-contre-pied : **chaque valeur de mouvement est arrondie à un cran**
-(`Math.round(v/pas)*pas`). L'aimantation saute par crans de 4 px, le tilt par
-paliers de 1,5°, la traînée de points s'aligne sur une grille de 12 px, les
-transitions CSS sont en `steps()`. Le mouvement est mécanique, jamais soyeux.
+## The idea: quantized motion
 
-Née d'une étude de trois sources : le langage visuel de **Nothing** (rôles
-typographiques stricts, naming technique, identité concentrée), les mécaniques
-cultes des portfolios primés et de **Codrops** (magnetic buttons, traînées de
-curseur, scramble), et les patterns d'API des bibliothèques les mieux notées
-de GitHub (**AOS** pour le déclaratif data-attributes, GSAP/Lenis/vanilla-tilt
-pour le catalogue d'effets).
+Every animation library on the market chases smoothness. DOTKIT does the
+opposite: **every motion value is rounded to a step**
+(`Math.round(v/step)*step`). Magnetic buttons snap in 4 px increments, tilt
+rotates in 1.5° notches, the cursor trail lands on a 12 px grid, CSS
+transitions run on `steps()`. Motion feels mechanical — like an instrument,
+not a ribbon.
 
-## Installation
+Born from a three-part study: **Nothing**'s visual language (strict
+typographic roles, technical naming, concentrated identity), the cult
+mechanics of award-winning portfolios and **Codrops** (magnetic buttons,
+cursor trails, text scramble), and the API patterns of GitHub's most-starred
+libraries (**AOS** for declarative data-attributes, GSAP/Lenis/vanilla-tilt
+for the effect catalog).
 
-Deux fichiers, aucune dépendance, aucun build :
+## Install
 
-```html
-<link rel="stylesheet" href="dotkit.css">
-<script src="dotkit.js" data-dk-cursor data-dk-trail></script>
+```bash
+npm install dotkitjs
 ```
 
-Ou via CDN (jsDelivr, version taguée) :
-
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Virgile-pct/dotkit@v1.0.0/dotkit.css">
-<script src="https://cdn.jsdelivr.net/gh/Virgile-pct/dotkit@v1.0.0/dotkit.js" data-dk-cursor data-dk-trail></script>
+<link rel="stylesheet" href="node_modules/dotkitjs/dotkit.css">
+<script src="node_modules/dotkitjs/dotkit.js" data-dk-cursor data-dk-trail></script>
 ```
 
-Auto-init au chargement. `data-dk-cursor` et `data-dk-trail` activent les
-modules globaux. Init manuelle : `<script src="dotkit.js" data-dk-manual>`
-puis `DotKit.init({cursor: true, trail: true})`.
+Or straight from a CDN — two files, nothing to build:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/dotkitjs@1.0.0/dotkit.css">
+<script src="https://unpkg.com/dotkitjs@1.0.0/dotkit.js" data-dk-cursor data-dk-trail></script>
+```
+
+Auto-inits on load. `data-dk-cursor` and `data-dk-trail` enable the global
+modules. Manual init: `<script src="dotkit.js" data-dk-manual>` then
+`DotKit.init({cursor: true, trail: true})`.
 
 ## Modules
 
 | Module | Usage | Options |
 |---|---|---|
-| reveal | `data-dk="reveal"` | `data-dk-variant="rise\|fade\|wipe"`, `data-dk-delay`, `data-dk-stagger` (cascade des enfants) |
-| split | `data-dk="split"` | — (lettre par lettre, aria-label auto) |
+| reveal | `data-dk="reveal"` | `data-dk-variant="rise\|fade\|wipe"`, `data-dk-delay`, `data-dk-stagger` (cascades children) |
+| split | `data-dk="split"` | — (letter by letter, auto aria-label) |
 | scramble | `data-dk="scramble"` | `data-dk-trigger="visible\|hover"` |
 | counter | `data-dk="counter"` | `data-dk-to`, `data-dk-duration` |
 | marquee | `data-dk="marquee"` | `data-dk-speed` (px/s), `data-dk-reverse` |
-| magnetic | `data-dk="magnetic"` | `data-dk-strength` (px, défaut 14) |
-| tilt | `data-dk="tilt"` | `data-dk-max` (degrés, défaut 6) |
-| parallax | `data-dk="parallax"` | `data-dk-speed` (défaut 0.2, borné ±60 px) |
-| grid | `data-dk="grid"` | `data-dk-step` (pas de la trame, défaut 22) |
-| progress | `data-dk="progress"` | — (barre de lecture, largeur en %) |
+| magnetic | `data-dk="magnetic"` | `data-dk-strength` (px, default 14) |
+| tilt | `data-dk="tilt"` | `data-dk-max` (degrees, default 6) |
+| parallax | `data-dk="parallax"` | `data-dk-speed` (default 0.2, capped ±60 px) |
+| grid | `data-dk="grid"` | `data-dk-step` (dot pitch, default 22) |
+| progress | `data-dk="progress"` | — (reading bar, width in %) |
 | clock | `data-dk="clock"` | `data-dk-zone="local\|utc"` |
-| cursor | script `data-dk-cursor` | `data-dk-cursor-label="MOT"` sur un élément |
+| cursor | script `data-dk-cursor` | `data-dk-cursor-label="WORD"` on any element |
 | trail | script `data-dk-trail` | — |
 
-Plusieurs modules peuvent se combiner : `data-dk="reveal tilt"`.
+Modules combine freely: `data-dk="reveal tilt"`.
 
 ## API
 
 ```js
-DotKit.init(opts)      // {cursor, trail} — auto-appelée sauf data-dk-manual
-DotKit.scan(root)      // initialise le contenu injecté dynamiquement
-DotKit.cursor()        // active le curseur-viseur
-DotKit.trail()         // active la traînée de points
-DotKit.destroy()       // retire listeners globaux, canvas, timers
-DotKit.quantize(v, s)  // l'arrondi au cran, exposé
+DotKit.init(opts)      // {cursor, trail} — called automatically unless data-dk-manual
+DotKit.scan(root)      // initialize dynamically injected content
+DotKit.cursor()        // enable the crosshair cursor
+DotKit.trail()         // enable the dot trail
+DotKit.destroy()       // remove global listeners, canvases, timers
+DotKit.quantize(v, s)  // the step-rounding function, exposed
 ```
 
-## Garde-fous (non négociables)
+## Guarantees (non-negotiable)
 
-- **`prefers-reduced-motion`** : états finaux immédiats, aucun mouvement décoratif.
-- **Pointeur tactile** : cursor, trail, magnetic, tilt et grid interactif désactivés.
-- **Sans JavaScript** : le contenu reste entièrement visible (les états cachés n'existent que sous `html.dk-js`).
-- Un seul `IntersectionObserver` mutualisé ; canvas animés uniquement quand visibles ; ~30 fps suffisent.
+- **`prefers-reduced-motion`**: final states applied instantly, zero decorative movement.
+- **Touch devices**: cursor, trail, magnetic, tilt and interactive grid are disabled.
+- **No JavaScript**: content stays fully visible (hidden states only exist under `html.dk-js`).
+- One shared `IntersectionObserver`; canvases only compute while visible; ~30 fps is plenty.
 
-## Poids
+## Size
 
-~19 Ko de JS + ~4 Ko de CSS, non minifiés, non compressés, commentaires
-inclus. Aucune dépendance.
+~19 KB JS + ~4 KB CSS, unminified, uncompressed, comments included.
+Zero dependencies.
 
-## Qui
+## Who
 
-Fait par [Virgile Pourchet](https://virgile-pct.github.io), avec des agents
-IA — la bibliothèque anime son portfolio, qui en embarque une copie
-(`lab/dotkit`). Licence [MIT](LICENSE).
+Built by [Virgile Pourchet](https://virgile-pct.github.io), with AI agents —
+the library powers his portfolio, which vendors a copy (`lab/dotkit`).
+[MIT](LICENSE) licensed.

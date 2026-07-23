@@ -1,0 +1,16 @@
+{
+  "name": "@virgile-pct/dotkit",
+  "version": "1.0.0",
+  "description": "Micro-bibliothèque UX brutaliste à mouvement quantifié — 13 modules, zéro dépendance.",
+  "main": "dotkit.js",
+  "style": "dotkit.css",
+  "files": ["dotkit.js", "dotkit.css"],
+  "keywords": ["ux", "animation", "brutalist", "vanilla-js", "scroll", "cursor", "quantized-motion"],
+  "author": "Virgile Pourchet (https://virgile-pct.github.io)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Virgile-pct/dotkit.git"
+  },
+  "homepage": "https://virgile-pct.github.io/lab/dotkit/demo.html"
+}

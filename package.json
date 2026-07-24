@@ -1,6 +1,6 @@
 {
   "name": "dotkitjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Brutalist UX micro-library with quantized motion — 13 modules, zero dependencies. Magnetic buttons that snap to a 4px grid, mechanical tilt, dot-matrix text scramble, cursor trail on a 12px grid.",
   "main": "dotkit.js",
   "style": "dotkit.css",

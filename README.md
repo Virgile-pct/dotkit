@@ -37,8 +37,8 @@ npm install dotkitjs
 Or straight from a CDN — two files, nothing to build:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/dotkitjs@1.0.0/dotkit.css">
-<script src="https://unpkg.com/dotkitjs@1.0.0/dotkit.js" data-dk-cursor data-dk-trail></script>
+<link rel="stylesheet" href="https://unpkg.com/dotkitjs@1.0.1/dotkit.css">
+<script src="https://unpkg.com/dotkitjs@1.0.1/dotkit.js" data-dk-cursor data-dk-trail></script>
 ```
 
 Auto-inits on load. `data-dk-cursor` and `data-dk-trail` enable the global
